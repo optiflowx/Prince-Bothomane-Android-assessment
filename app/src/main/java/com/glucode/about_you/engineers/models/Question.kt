@@ -3,7 +3,6 @@ package com.glucode.about_you.engineers.models
 abstract class Question(
     val questionText: String,
     val answerOptions: List<String>,
-    val questionType: String,//TODO - Is this still necessary?
     val answer: Answer
 ) {
     class One(answer: Answer): Question(
@@ -14,7 +13,6 @@ abstract class Question(
             "6pm",
             "Midnight"
         ),
-        questionType = "SELECTION",
         answer = answer
     )
     class Two(answer: Answer): Question(
@@ -26,7 +24,6 @@ abstract class Question(
             "21 to 25 years old",
             "26 years old or older"
         ),
-        questionType = "SELECTION",
         answer = answer
     )
     class Three(answer: Answer): Question(
@@ -41,7 +38,6 @@ abstract class Question(
             "Rust",
             "None"
         ),
-        questionType = "SELECTION",
         answer = answer
     )
     class Four(answer: Answer): Question(
@@ -51,7 +47,6 @@ abstract class Question(
             "Once a year",
             "Once every few years"
         ),
-        questionType = "SELECTION",
         answer = answer
     )
     class Five(answer: Answer): Question(
@@ -64,7 +59,6 @@ abstract class Question(
             "Go down a google rabbit hole",
             "Panic"
         ),
-        questionType = "SELECTION",
         answer = answer
     )
 }

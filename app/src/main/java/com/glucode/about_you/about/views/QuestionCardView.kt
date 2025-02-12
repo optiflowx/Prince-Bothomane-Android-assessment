@@ -28,8 +28,8 @@ class QuestionCardView @JvmOverloads constructor(
         set(value) {
             field = value
             binding.answers.removeAllViews()
-            value.forEach { answer ->
-                addAnswer(answer)
+            value.forEachIndexed { index, answer ->
+                addAnswer(index, answer)
             }
         }
 
@@ -46,22 +46,27 @@ class QuestionCardView @JvmOverloads constructor(
         setCardBackgroundColor(ContextCompat.getColor(context, R.color.black))
     }
 
-    private fun addAnswer(title: String) {
+    private fun addAnswer(index: Int, title: String) {
         val answerView = AnswerCardView(context)
+
         answerView.title = title
-        answerView.setOnClickListener { onAnswerClick(it) }
+        answerView.isSelected = false
+        answerView.setOnClickListener { onAnswerClick(index, it) }
+
         binding.answers.addView(answerView)
     }
 
-    private fun onAnswerClick(view: View) {
+    private fun onAnswerClick(index: Int, view: View) {
         if (!view.isSelected) {
             binding.answers.children.filter { it.isSelected }.forEach {
                 it.isSelected = false
             }
+
+            setSelection(index)
         }
     }
 
-    private fun setSelection() {
-
+    private fun setSelection(index: Int) {
+        selection = index
     }
 }

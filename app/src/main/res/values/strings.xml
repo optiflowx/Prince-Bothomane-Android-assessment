@@ -10,4 +10,9 @@
 
     <!--About-->
     <string name="about_screen_title">About</string>
+    <string name="engineer_profile_img">Engineer Profile Image</string>
+    <string name="quick_stats_years">Years</string>
+    <string name="quick_stats_coffees">Coffees</string>
+    <string name="quick_stats_bugs">Bugs</string>
+    <string name="image_picker_not_found">Image picker not found</string>
 </resources>

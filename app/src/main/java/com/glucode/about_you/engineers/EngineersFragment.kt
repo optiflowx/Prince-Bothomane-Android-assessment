@@ -35,7 +35,7 @@ class EngineersFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_years -> {
-                val sortedEngineers = MockData.engineers.sortedBy { it.name }
+                val sortedEngineers = MockData.engineers.sortedBy { it.quickStats.years }
                 setUpEngineersList(sortedEngineers)
                 return true
             }

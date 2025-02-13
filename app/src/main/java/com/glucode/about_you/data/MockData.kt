@@ -1,4 +1,4 @@
-package com.glucode.about_you.mockdata
+package com.glucode.about_you.data
 
 import com.glucode.about_you.engineers.models.Answer
 import com.glucode.about_you.engineers.models.Engineer

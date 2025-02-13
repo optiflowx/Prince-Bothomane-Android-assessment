@@ -15,10 +15,10 @@ import androidx.fragment.app.Fragment
 import com.glucode.about_you.R
 import com.glucode.about_you.about.views.AboutInfoCardView
 import com.glucode.about_you.about.views.QuestionCardView
+import com.glucode.about_you.data.MockData
 import com.glucode.about_you.databinding.FragmentAboutBinding
 import com.glucode.about_you.engineers.models.Engineer
 import com.glucode.about_you.engineers.models.QuickStats
-import com.glucode.about_you.mockdata.MockData
 
 @Suppress("DEPRECATION")
 class AboutFragment : Fragment() {

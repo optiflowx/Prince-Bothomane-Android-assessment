@@ -1,7 +1,7 @@
 package com.glucode.about_you
 
+import com.glucode.about_you.data.MockData
 import com.glucode.about_you.engineers.models.Engineer
-import com.glucode.about_you.mockdata.MockData
 import org.junit.Assert.assertTrue
 import org.junit.Test
 

@@ -37,7 +37,7 @@ object MockData {
             quickStats = QuickStats(years = 14, coffees = 1000, bugs = 100),
             questions = listOf(
                 Question.One(Answer(text = "midnight", index = 3)),
-                Question.Two(Answer(text = "10 to 15 years old", index = 0)),
+                Question.Two(Answer(text = "10 to 15 years old", index = 1)),
                 Question.Three(Answer(text = "Kotlin", index = 1)),
                 Question.Four(Answer(text = "Every few months", index = 0)),
                 Question.Five(Answer(text = "Watch or read a tutorial", index = 3))
@@ -73,7 +73,7 @@ object MockData {
             quickStats = QuickStats(years = 10, coffees = 1800, bugs = 1000),
             questions = listOf(
                 Question.One(Answer(text = "6am", index = 0)),
-                Question.Two(Answer(text = "10 to 15 years old", index = 0)),
+                Question.Two(Answer(text = "10 to 15 years old", index = 1)),
                 Question.Three(Answer(text = "Rust", index = 6)),
                 Question.Four(Answer(text = "Every few months", index = 0)),
                 Question.Five(Answer(text = "Go down a google rabbit hole", index = 4))
@@ -85,10 +85,10 @@ object MockData {
             quickStats = QuickStats(years = 4, coffees = 2, bugs = 3),
             questions = listOf(
                 Question.One(Answer(text = "6am", index = 0)),
-                Question.Two(Answer(text = "10 to 15 years old", index = 0)),
+                Question.Two(Answer(text = "10 to 15 years old", index = 1)),
                 Question.Three(Answer(text = "Rust", index = 6)),
                 Question.Four(Answer(text = "Every few months", index = 0)),
-                Question.Five(Answer(text = "Visit Stack Overflow", index = 4))
+                Question.Five(Answer(text = "Visit Stack Overflow", index = 0))
             )
         )
     )

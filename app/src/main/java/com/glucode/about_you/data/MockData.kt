@@ -82,7 +82,7 @@ object MockData {
         Engineer(
             name = "Prince",
             role = "Dev",
-            quickStats = QuickStats(years = 10, coffees = 1800, bugs = 1000),
+            quickStats = QuickStats(years = 4, coffees = 2, bugs = 3),
             questions = listOf(
                 Question.One(Answer(text = "6am", index = 0)),
                 Question.Two(Answer(text = "10 to 15 years old", index = 0)),

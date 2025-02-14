@@ -28,7 +28,6 @@ class EngineersFragment : Fragment() {
         _binding = FragmentEngineersBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
 
-        //Reactively get latest state from the Engineers Flow
         lifecycleScope.launch {
             viewModel.engineers.collectLatest { engineers ->
                 setUpEngineersList(engineers)
@@ -68,9 +67,6 @@ class EngineersFragment : Fragment() {
     private fun goToAbout(engineer: Engineer) {
         val bundle = Bundle().apply {
             putString("name", engineer.name)
-            putString("role", engineer.role)
-            putString("image_uri", engineer.defaultImageName?.toString() ?: "")
-            putParcelable("quick_stats", engineer.quickStats)
         }
 
         findNavController().navigate(R.id.action_engineersFragment_to_aboutFragment, bundle)

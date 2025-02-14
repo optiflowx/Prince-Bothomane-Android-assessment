@@ -31,8 +31,8 @@ class EngineersRecyclerViewAdapter(
                 onClick(engineer)
             }
 
-            if (engineer.profileImageUri != null && engineer.profileImageUri != Uri.EMPTY) {
-                binding.profileImage.setImageURI(engineer.profileImageUri)
+            if (engineer.defaultImageName.isNotBlank()) {
+                binding.profileImage.setImageURI(Uri.parse(engineer.defaultImageName))
                 binding.profileImage.setColorFilter(android.R.color.transparent)
             }
         }

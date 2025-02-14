@@ -3,16 +3,20 @@ package com.glucode.about_you.engineers
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.glucode.about_you.R
-import com.glucode.about_you.data.MockData
 import com.glucode.about_you.databinding.FragmentEngineersBinding
 import com.glucode.about_you.engineers.models.Engineer
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class EngineersFragment : Fragment() {
     private var _binding: FragmentEngineersBinding? = null
 
+    private val viewModel by viewModels<EngineersViewModel>()
     private val binding: FragmentEngineersBinding
         get() = _binding!!
 
@@ -23,7 +27,14 @@ class EngineersFragment : Fragment() {
     ): View {
         _binding = FragmentEngineersBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
-        setUpEngineersList(MockData.engineers)
+
+        //Reactively get latest state from the Engineers Flow
+        lifecycleScope.launch {
+            viewModel.engineers.collectLatest { engineers ->
+                setUpEngineersList(engineers)
+            }
+        }
+
         return binding.root
     }
 
@@ -34,24 +45,9 @@ class EngineersFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_years -> {
-                val sortedEngineers = MockData.engineers.sortedBy { it.quickStats.years }
-                setUpEngineersList(sortedEngineers)
-                return true
-            }
-
-            R.id.action_coffees -> {
-                val sortedEngineers = MockData.engineers.sortedBy { it.quickStats.coffees }
-                setUpEngineersList(sortedEngineers)
-                return true
-            }
-
-            R.id.action_bugs -> {
-                val sortedEngineers = MockData.engineers.sortedBy { it.quickStats.bugs }
-                setUpEngineersList(sortedEngineers)
-                return true
-            }
-
+            R.id.action_years -> viewModel.sortEngineersByYears()
+            R.id.action_coffees -> viewModel.sortEngineersByCoffees()
+            R.id.action_bugs -> viewModel.sortEngineersByBugs()
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -73,7 +69,7 @@ class EngineersFragment : Fragment() {
         val bundle = Bundle().apply {
             putString("name", engineer.name)
             putString("role", engineer.role)
-            putString("image_uri", engineer.profileImageUri?.toString() ?: "")
+            putString("image_uri", engineer.defaultImageName?.toString() ?: "")
             putParcelable("quick_stats", engineer.quickStats)
         }
 

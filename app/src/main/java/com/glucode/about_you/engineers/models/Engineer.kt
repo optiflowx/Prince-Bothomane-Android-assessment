@@ -5,13 +5,13 @@ import android.net.Uri
 data class Engineer(
     val name: String,
     val role: String,
-    private var _profileImageUri: Uri? = null,
+    private var _defaultImageName: Uri? = null,
     val quickStats: QuickStats,
     val questions: List<Question>,
 ) {
-    var profileImageUri: Uri?
-        get() = _profileImageUri
+    var defaultImageName: Uri?
+        get() = _defaultImageName
         set(value) {
-            _profileImageUri = value
+            _defaultImageName = value
         }
 }

@@ -1,32 +1,36 @@
-package com.glucode.about_you
+package com.glucode.about_you.engineer
 
-import com.glucode.about_you.data.MockData
+import com.glucode.about_you.engineers.EngineersViewModel
 import com.glucode.about_you.engineers.models.Engineer
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
+import kotlin.ranges.until
 
-class EngineerSorterTest {
-    private val engineers: List<Engineer> = MockData.engineers
+class EngineerSortingTests {
+    private lateinit var viewModel: EngineersViewModel
+
+    @Before
+    fun setup() {
+        viewModel = EngineersViewModel()
+    }
 
     @Test
     fun `sort engineers by years of experience ascending`() {
-        val sortedEngineers = engineers.sortedBy { it.quickStats.years }
-
-        assertTrue(isSortedByYears(sortedEngineers))
+        viewModel.sortEngineersByYears()
+        assertTrue(isSortedByYears(viewModel.engineers.value))
     }
 
     @Test
     fun `sort engineers by coffees consumed ascending`() {
-        val sortedEngineers = engineers.sortedBy { it.quickStats.coffees }
-
-        assertTrue(isSortedByCoffees(sortedEngineers))
+        viewModel.sortEngineersByCoffees()
+        assertTrue(isSortedByCoffees(viewModel.engineers.value))
     }
 
     @Test
     fun `sort engineers by bugs fixed ascending`() {
-        val sortedEngineers = engineers.sortedBy { it.quickStats.bugs }
-
-        assertTrue(isSortedByBugs(sortedEngineers))
+        viewModel.sortEngineersByBugs()
+        assertTrue(isSortedByBugs(viewModel.engineers.value))
     }
 
     // Helper functions to check if the list is sorted correctly
